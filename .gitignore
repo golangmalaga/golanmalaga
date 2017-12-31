@@ -8,3 +8,8 @@
 ####################
 golangmalaga
 golangmalaga.exe
+
+#####################
+## Configuracion bd##
+#####################
+config.json
