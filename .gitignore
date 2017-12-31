@@ -17,4 +17,4 @@ config.json
 #####################
 ### Llave privada ###
 #####################
-Key/private.rsa
+Keys/private.rsa
