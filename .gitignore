@@ -13,3 +13,8 @@ golangmalaga.exe
 ## Configuracion bd##
 #####################
 config.json
+
+#####################
+### Llave privada ###
+#####################
+Key/private.rsa
