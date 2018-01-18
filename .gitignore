@@ -2,6 +2,7 @@
 ### Carpetas ######
 ###################
 .idea/
+node_modules/
 
 ####################
 ### Ejecutable #####
@@ -18,3 +19,5 @@ config.json
 ### Llave privada ###
 #####################
 Keys/private.rsa
+
+package-lock.json

@@ -1,8 +1,8 @@
-package Routes
+package routes
 
 import (
 	"github.com/gorilla/mux"
-	"github.com/golangmalaga/golangmalaga/Controllers"
+	"github.com/golangmalaga/golangmalaga/controllers"
 	"github.com/urfave/negroni"
 )
 
@@ -12,7 +12,7 @@ import (
 func SetUserRouter(router *mux.Router) {
 	prefix := "/api/users"
 	subRouter := mux.NewRouter().PathPrefix(prefix).Subrouter().StrictSlash(true)
-	subRouter.HandleFunc("/", Controllers.UserCreate).Methods("POST")
+	subRouter.HandleFunc("/", controllers.UserCreate).Methods("POST")
 
 	router.PathPrefix(prefix).Handler(
 		negroni.New(

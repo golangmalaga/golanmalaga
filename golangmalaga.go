@@ -3,8 +3,8 @@ package main
 import (
 	"flag"
 	"log"
-	"github.com/golangmalaga/golangmalaga/Migration"
-	"github.com/golangmalaga/golangmalaga/Routes"
+	"github.com/golangmalaga/golangmalaga/migration"
+	"github.com/golangmalaga/golangmalaga/routes"
 	"github.com/urfave/negroni"
 	"net/http"
 )
@@ -15,11 +15,11 @@ func main()  {
 	flag.Parse()
 	if migrate == "yes" {
 		log.Println("Comenzó la migración a la base de datos...")
-		Migration.Migrate()
+		migration.Migrate()
 		log.Println("Se finalizó la migración.")
 	}
 	// Inicia las rutas
-	router := Routes.InitRoutes()
+	router := routes.InitRoutes()
 
 	//Inicia los middlewares
 	n := negroni.Classic()

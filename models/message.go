@@ -1,4 +1,4 @@
-package Models
+package models
 
 //Message mensaje para el cliente de la API
 type Message struct {

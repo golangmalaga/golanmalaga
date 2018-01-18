@@ -1,14 +1,14 @@
-package Commons
+package commons
 
 import (
 	"net/http"
-	"github.com/golangmalaga/golangmalaga/Models"
+	"github.com/golangmalaga/golangmalaga/models"
 	"encoding/json"
 	"github.com/labstack/gommon/log"
 )
 
 //DisplayMessage devuelve un mensaje al cliente
-func DisplayMessage(w http.ResponseWriter, m Models.Message)  {
+func DisplayMessage(w http.ResponseWriter, m models.Message)  {
 	j, err := json.Marshal(m)
 	if err != nil {
 		log.Fatalf("Error al convertir el mensaje: %s", err)

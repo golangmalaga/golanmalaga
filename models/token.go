@@ -1,4 +1,4 @@
-package Models
+package models
 
 //Token permite envolver el token generado
 type Token struct {

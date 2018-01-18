@@ -1,23 +1,23 @@
-package Controllers
+package controllers
 
 import (
 	"net/http"
-	"github.com/golangmalaga/golangmalaga/Models"
+	"github.com/golangmalaga/golangmalaga/models"
 	"github.com/dgrijalva/jwt-go/request"
 	"github.com/dgrijalva/jwt-go"
-	"github.com/golangmalaga/golangmalaga/Commons"
+	"github.com/golangmalaga/golangmalaga/commons"
 	"context"
 )
 
 //ValidateToken validar el token del cliente
 func ValidateToken(w http.ResponseWriter, r *http.Request, next http.HandlerFunc)  {
-	var m Models.Message
+	var m models.Message
 	token, err := request.ParseFromRequestWithClaims(
 		r,
 		request.OAuth2Extractor,
-		&Models.Claim{},
+		&models.Claim{},
 		func(t *jwt.Token) (interface{}, error) {
-			return Commons.PublicKey, nil
+			return commons.PublicKey, nil
 		},
 	)
 	if err != nil {
@@ -28,15 +28,15 @@ func ValidateToken(w http.ResponseWriter, r *http.Request, next http.HandlerFunc
 			switch vError.Errors {
 			case jwt.ValidationErrorExpired:
 				m.Message = "Su token han expirado"
-				Commons.DisplayMessage(w, m)
+				commons.DisplayMessage(w, m)
 				return
 			case jwt.ValidationErrorSignatureInvalid:
 				m.Message = "Las firma del foken no coincide"
-				Commons.DisplayMessage(w, m)
+				commons.DisplayMessage(w, m)
 				return
 			default:
 				m.Message = "Su token no es válido"
-				Commons.DisplayMessage(w, m)
+				commons.DisplayMessage(w, m)
 				return
 
 			}
@@ -44,11 +44,11 @@ func ValidateToken(w http.ResponseWriter, r *http.Request, next http.HandlerFunc
 		}
 	}
 	if token.Valid {
-		ctx := context.WithValue(r.Context(), "user", token.Claims.(*Models.Claim).User)
+		ctx := context.WithValue(r.Context(), "user", token.Claims.(*models.Claim).User)
 		next(w, r.WithContext(ctx))
 	}else {
 		m.Code = http.StatusUnauthorized
 		m.Message = "Su token no es válido"
-		Commons.DisplayMessage(w, m)
+		commons.DisplayMessage(w, m)
 	}
 }

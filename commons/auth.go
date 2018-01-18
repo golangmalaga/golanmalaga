@@ -1,11 +1,11 @@
-package Commons
+package commons
 
 import (
 	"crypto/rsa"
 	"io/ioutil"
 	"github.com/labstack/gommon/log"
 	"github.com/dgrijalva/jwt-go"
-	"github.com/golangmalaga/golangmalaga/Models"
+	"github.com/golangmalaga/golangmalaga/models"
 )
 
 var (
@@ -34,8 +34,8 @@ func init()  {
 }
 
 // GenerateJWT genera el token para el cliente
-func GenerateJWT(user Models.User) string {
-	claims := Models.Claim{
+func GenerateJWT(user models.User) string {
+	claims := models.Claim{
 		User: user,
 		StandardClaims: jwt.StandardClaims{
 			Issuer: "Golangmalaga",
